@@ -240,7 +240,7 @@ void start_game() {
 
         // ถ้าทั้งสองฝ่ายไม่มี legal move → จบเกม
         if (!current_can_move && !opponent_can_move) {
-            broadcast("No one can move\n---- GAME END ----\n");
+            broadcast("No one can move\nEnd this game\n");
             declare_winner();
             break;
         }
