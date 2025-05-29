@@ -301,6 +301,12 @@ void start_game() {
 
         // ตรวจสอบว่ากระดานเต็มหรือไม่ ถ้าเต็มจบเกม
         if (board_full()) {
+            // แสดงกระดานก่อนจะบอกว่ากระดานเต็ม
+            char final_board[MAX_MSG];
+            memset(final_board, 0, sizeof(final_board));
+            render_board(final_board);
+            broadcast(final_board);
+            
             broadcast("Board is full\n");
             declare_winner();
             break;
@@ -308,7 +314,6 @@ void start_game() {
     }
 }
 
-// ฟังก์ชันหลัก
 int main() {
     int server_fd, client_fd, addr_len;
     struct sockaddr_in server_addr, client_addr;
