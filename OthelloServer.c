@@ -253,7 +253,7 @@ void start_game() {
             break;
         }
 
-        // ถ้าฝ่ายปัจจุบันไม่มี legal move → แจ้งข้ามเทิร์น
+        // ถ้าฝ่ายปัจจุบันไม่มี legal move จะทำการแจ้งข้ามเทิร์น
         if (!current_can_move) {
             char skip_msg[MAX_MSG];
             snprintf(skip_msg, sizeof(skip_msg),
