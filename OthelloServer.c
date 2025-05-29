@@ -238,7 +238,7 @@ void start_game() {
         int current_can_move = has_legal_move(current_color);
         int opponent_can_move = has_legal_move(opponent_color);
 
-        // ถ้าทั้งสองฝ่ายไม่มี legal move → จบเกม
+        // ถ้าทั้งสองฝ่ายไม่มี legal move ถือว่าจบเกม
         if (!current_can_move && !opponent_can_move) {
             broadcast("No one can move\nEnd this game\n");
             declare_winner();
