@@ -51,15 +51,26 @@ void broadcast(const char* msg) {
     }
 }
 
-// แปลงกระดานให้เป็นข้อความและบันทึกลง buffer
+// แสดงกระดาน Othello ลงใน buffer แบบเป็นข้อความ
 void render_board(char* buffer) {
-    strcpy(buffer, "\n  0 1 2 3 4 5 6 7\n");
-    for (int i = 0; i < BOARD_SIZE; i++) {
-        char line[100];
-        sprintf(line, "%d ", i);  // แสดงหมายเลขแถว
-        for (int j = 0; j < BOARD_SIZE; j++) {
-            sprintf(line + strlen(line), "%c ", board[i][j]);
+    strcpy(buffer, "\n   ");  // เว้นให้ตรงกับเลขแถว
+    for (int col = 0; col < BOARD_SIZE; col++) {
+        char col_label[5];
+        snprintf(col_label, sizeof(col_label), "%d ", col);
+        strcat(buffer, col_label);
+    }
+    strcat(buffer, "\n");
+
+    // เพิ่มเนื้อหากระดานทีละแถว
+    for (int row = 0; row < BOARD_SIZE; row++) {
+        char line[BOARD_SIZE * 3 + 10];  // ขนาดสำหรับเลขและหมาก
+        snprintf(line, sizeof(line), "%2d ", row);  // แสดงเลขแถวชิดขวาในช่อง
+
+        for (int col = 0; col < BOARD_SIZE; col++) {
+            char piece = board[row][col];
+            snprintf(line + strlen(line), sizeof(line) - strlen(line), "%c ", piece);
         }
+
         strcat(buffer, line);
         strcat(buffer, "\n");
     }
