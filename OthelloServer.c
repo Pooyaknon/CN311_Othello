@@ -165,11 +165,8 @@ void declare_winner() {
     Score s = count_score(); // นับคะแนนดำ-ขาว
     char msg[MAX_MSG];
 
-    // แสดงข้อความจบเกมก่อน
-    broadcast("\n---- GAME END ----\n");
-
-    // ตามด้วยคะแนน
-    snprintf(msg, sizeof(msg), "Total Score\n%s (Black): %d\n%s (White): %d\n", 
+    // บอกเกมจบและคะแนน
+    snprintf(msg, sizeof(msg), "\n---- GAME END ----\nTotal Score\n%s (Black): %d\n%s (White): %d\n", 
             client_names[0], s.black, client_names[1], s.white);
     broadcast(msg);
 
